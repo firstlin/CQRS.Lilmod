@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Configuration\" />
+    <Folder Include="DTOs\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="Services\Apartment\" />
+    <Folder Include="Services\Catalog\GuestType\Command\Add\" />
+    <Folder Include="Services\Catalog\GuestType\Command\Delete\" />
+    <Folder Include="Services\Catalog\GuestType\Command\Update\" />
+    <Folder Include="Services\Catalog\GuestType\Queries\" />
+    <Folder Include="Services\Catalog\RoomType\Command\" />
+    <Folder Include="Services\Catalog\RoomType\Queries\" />
+    <Folder Include="Services\Hotel\" />
+    <Folder Include="Services\Administration\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.10.0" />
+    <PackageReference Include="Mapster" Version="7.4.0" />
+    <PackageReference Include="Mapster.DependencyInjection" Version="1.0.1" />
+    <PackageReference Include="MediatR" Version="12.4.1" />
+  </ItemGroup>
+
+</Project>
