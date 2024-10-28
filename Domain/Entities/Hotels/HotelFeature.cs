@@ -1,16 +1,15 @@
 ﻿using Domain.Common;
 using Domain.Entities.Administration;
-using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities.Hotels;
 
+[PrimaryKey(nameof(HotelId), nameof(FeatureId))]
 public class HotelFeature : BaseEntity
 {
-    [Key]
     public int HotelId { get; set; }
 
-    [Key]
     public int FeatureId { get; set; }
 
     [ForeignKey(nameof(HotelId))]

@@ -1,11 +1,31 @@
 # See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
 # This stage is used when running from VS in fast mode (Default for Debug configuration)
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-USER app
+#FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+#USER app
+#WORKDIR /app
+#EXPOSE 8080
+#EXPOSE 8081
+
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-nanoserver-1809 AS base
+
+# Switch to ContainerAdministrator to get necessary privileges
+USER ContainerAdministrator
+
+# Create the ContainerUser with a password and add to Administrators group
+RUN net user ContainerUser Password123! /add && \
+    net localgroup administrators ContainerUser /add
+
+# Switch to ContainerUser for security reasons
+USER ContainerUser
+
+# Set the working directory to /app
 WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
+
+# Expose ports 80 and 443
+EXPOSE 80
+EXPOSE 443
+
 
 
 # This stage is used to build the service project

@@ -1,5 +1,7 @@
-﻿namespace Domain.Entities.Catalogs;
+﻿using Domain.Common;
 
-public class GuestType
+namespace Domain.Entities.Catalogs;
+
+public class GuestType : BaseCatalog
 {
 }

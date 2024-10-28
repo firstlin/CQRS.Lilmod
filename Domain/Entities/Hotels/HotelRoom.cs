@@ -1,16 +1,16 @@
 ﻿using Domain.Common;
 using Domain.Entities.Catalogs;
-using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities.Hotels;
 
-public class HotelRoom : BaseEntity 
+[PrimaryKey(nameof(Id), nameof(HotelId))]
+public class HotelRoom : BaseEntity
 {
-    [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
 
-    [Key]
     public int HotelId { get; set; }
 
     public int RoomTypeId { get; set; }
@@ -21,5 +21,6 @@ public class HotelRoom : BaseEntity
     public Hotel Hotel { get; set; }
 
     [ForeignKey(nameof(RoomTypeId))]
+    [DeleteBehavior(DeleteBehavior.NoAction)]
     public RoomType RoomType { get; set; }
 }

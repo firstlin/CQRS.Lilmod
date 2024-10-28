@@ -1,16 +1,15 @@
 ﻿using Domain.Common;
 using Domain.Entities.Administration;
-using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities.Apartments;
 
+[PrimaryKey(nameof(ReviewId), nameof(ApartmentId))]
 public class ApartmentReview : BaseEntity
 {
-    [Key]
     public int ReviewId { get; set; }
 
-    [Key]
     public int ApartmentId { get; set; }
 
     [ForeignKey(nameof(ReviewId))]

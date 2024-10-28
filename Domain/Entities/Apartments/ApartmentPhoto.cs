@@ -1,19 +1,19 @@
 ﻿using Domain.Common;
 using Domain.Entities.Administration;
-using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities.Apartments;
 
+[PrimaryKey(nameof(PhotoId), nameof(ApartmentId))]
 public class ApartmentPhoto : BaseEntity
 {
-    [Key]
-    public long PhotoId { get; set; }
+    public int PhotoId { get; set; }
 
-    [Key]
-    public long ApartmentId { get; set; }
+    public int ApartmentId { get; set; }
 
     [ForeignKey(nameof(PhotoId))]
+    [DeleteBehavior(DeleteBehavior.NoAction)]
     public Photo Photo { get; set; }
 
     [ForeignKey(nameof(ApartmentId))]

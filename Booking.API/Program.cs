@@ -1,4 +1,5 @@
 using Application;
+using Booking.API.Middleware;
 using Infrastructure;
 using Serilog;
 
@@ -6,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddApplicationServices();
-builder.Services.AddInfrastructureServices();
+builder.Services.AddInfrastructureServices(builder.Configuration);
 
 builder.Host.UseSerilog((context, cfg)=> cfg.ReadFrom.Configuration(context.Configuration));
 
@@ -18,6 +19,9 @@ var app = builder.Build();
 app.UseSerilogRequestLogging();
 
 app.UseHttpsRedirection();
+
+// Global Error Handling Middleware
+app.UseMiddleware<ErrorHandlingMiddleware>();
 
 app.UseAuthorization();
 
